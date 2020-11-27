@@ -11,6 +11,9 @@
     <title>Title</title>
 </head>
 <body>
-<p><a href="downloadForm.jsp">下载文件</a></p>
+
+<form action="${pageContext.request.contextPath}/list" method="post">
+    <input type="submit" value="提交"/>
+</form>
 </body>
 </html>

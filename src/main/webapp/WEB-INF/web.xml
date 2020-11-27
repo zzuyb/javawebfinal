@@ -102,14 +102,24 @@
     <url-pattern>/upload.do</url-pattern>
   </servlet-mapping>
 
-<!--下载-->
+<!--获取文件列表-->
+  <servlet>
+    <servlet-name>downloadFileServlet</servlet-name>
+    <servlet-class>servlets.DownloadFile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>downloadFileServlet</servlet-name>
+    <url-pattern>/list</url-pattern>
+  </servlet-mapping>
+
+  <!--获取下载文件-->
   <servlet>
     <servlet-name>downloadServlet</servlet-name>
-    <servlet-class>servlets.Download</servlet-class>
+    <servlet-class>servlets.download</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>downloadServlet</servlet-name>
-    <url-pattern>/download.do</url-pattern>
+    <url-pattern>/download</url-pattern>
   </servlet-mapping>
 
 </web-app>
