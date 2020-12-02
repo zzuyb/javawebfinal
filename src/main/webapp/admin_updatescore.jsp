@@ -45,7 +45,6 @@
 </tr>
     <%
         for(int j=0;j<list.size();j++){%>
-
     <tr>
         <td><%=list.get(j).getSno() %></td>
         <td><%=list.get(j).getSname()%></td>

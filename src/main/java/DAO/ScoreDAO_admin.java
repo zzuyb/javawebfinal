@@ -9,7 +9,7 @@ import java.util.List;
 import beans.Score;
 import beans.Student;
 
-public class ScoreDAO {
+public class ScoreDAO_admin {
     private static Connection conn=null;
 
     public static void initConnection() throws Exception{//建立连接
@@ -44,7 +44,7 @@ public class ScoreDAO {
         return list;
     }
 
-    public static ArrayList<Score> findscore2(String Cno) throws Exception{//按课程号查找成绩
+    public static ArrayList<Score> findscore_admin(String Cno) throws Exception{//按课程号查找成绩
         initConnection();
         Statement state =null;
         ResultSet rs = null;
@@ -71,6 +71,59 @@ public class ScoreDAO {
         return list;
     }
 
+    public static ArrayList<Score> findscore_student(String Sno,String Cno) throws Exception{//按课程号查找成绩
+        initConnection();
+        Statement state =null;
+        ResultSet rs = null;
+        ArrayList<Score> list=new ArrayList<Score>();
+        try{
+            String sql = "select Student.Sno,Cname,Grade,Tno,Course.Cno,Sname from Student,SCT,Course Where Student.Sno= '"+Sno+"'and Course.Cno= '"+Cno+"'and Student.Sno=SCT.Sno and Course.Cno=SCT.Cno";
+            state = conn.createStatement();
+            rs=state.executeQuery(sql);
+            while(rs.next()){
+                Score score=new Score();
+                score.setSname(rs.getString("Sname"));
+                score.setSno(rs.getString("Sno"));
+                score.setCno(rs.getString("Cno"));
+                score.setCname(rs.getString("Cname"));
+                score.setGrade(rs.getString("Grade"));
+                score.setTno(rs.getString("Tno"));
+                list.add(score);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return list;
+    }
+
+    public static ArrayList<Score> findscore_teacher(String Tno) throws Exception{//按老师号查找成绩
+        initConnection();
+        Statement state =null;
+        ResultSet rs = null;
+        ArrayList<Score> list=new ArrayList<Score>();
+        try{
+            String sql = "select Student.Sno,Cname,Grade,Teacher.Tno,Course.Cno,Sname from Student,SCT,Course,Teacher Where Teacher.Tno= '"+Tno+"'and Student.Sno=SCT.Sno and Course.Cno=SCT.Cno";
+            state = conn.createStatement();
+            rs=state.executeQuery(sql);
+            while(rs.next()){
+                Score score=new Score();
+                score.setSname(rs.getString("Sname"));
+                score.setSno(rs.getString("Sno"));
+                score.setCno(rs.getString("Cno"));
+                score.setCname(rs.getString("Cname"));
+                score.setGrade(rs.getString("Grade"));
+                score.setTno(rs.getString("Tno"));
+                list.add(score);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return list;
+    }
     public static int addscore(String Sno,String Cno,String Tno,String Grade) throws Exception{//增加成绩
         initConnection();
         Statement state =null;

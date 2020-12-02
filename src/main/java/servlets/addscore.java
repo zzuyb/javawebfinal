@@ -3,17 +3,15 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 import DAO.CourseDAO;
-import DAO.ScoreDAO;
+import DAO.ScoreDAO_admin;
 import DAO.UserDAO;
 import beans.Course;
-import beans.Score;
 import beans.Student;
 import beans.Teacher;
 
@@ -38,7 +36,7 @@ public class addscore extends HttpServlet {
                 {
                     if(teacher.getCno().trim().equals(courseid)){//存在该课程和存在该老师教授这门课程
                         try {
-                            int i=ScoreDAO.addscore(studentid,courseid,Tno,score);
+                            int i= ScoreDAO_admin.addscore(studentid,courseid,Tno,score);
                             if(i!=0){
                                 out.print("<script>alert('添加成功');"
                                         + "window.location.href='admin_addscore.jsp'</script>");

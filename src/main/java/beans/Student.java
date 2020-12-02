@@ -9,6 +9,7 @@ public class Student {
     private String Age;
     private String Clno;
 
+
     public String getSno() {
         return Sno;
     }

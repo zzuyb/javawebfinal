@@ -94,7 +94,7 @@ public class UserDAO {
         return admin;
     }
 
-    public static Teacher findTeacher(String Tno) throws Exception{//查找管理员
+    public static Teacher findTeacher(String Tno) throws Exception{//教师
         initConnection();
         Statement state =null;
         ResultSet rs = null;

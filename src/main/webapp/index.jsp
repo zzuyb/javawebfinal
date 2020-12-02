@@ -8,6 +8,7 @@
         <p> 密码<input name="password" type="password" onBlur="f1()"/><br></p>
         <p><input name="user" type="radio" value="student" checked>学生
             <input name="user" type="radio" value="administrator">管理员<br></p>
+        <input name="user" type="radio" value="teacher">教师<br></p>
         <p><input type="submit" value="登录"></p>
     </form>
     <p><a href="register.jsp">没有账号？点击注册吧</a></p>

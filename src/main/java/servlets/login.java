@@ -46,7 +46,7 @@ public class login extends HttpServlet {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-            }else{//管理员登录时
+            }else if(user.equals("administrator")){//管理员登录时
                 try {
                     Admin admin=UserDAO.findadmin(userid);
                     if(admin.getPassword().trim().equals(password)){
@@ -62,6 +62,25 @@ public class login extends HttpServlet {
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
+                }
+
+            }
+            else{
+                Teacher teacher= null;
+                try {
+                    teacher = UserDAO.findTeacher(userid);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if(teacher.getPassword().trim().equals(password)){
+                    HttpSession session = request.getSession();
+                    session.setAttribute("teacher",teacher);
+                    System.out.println("登录成功！");
+                    response.sendRedirect("teacher_menu.jsp");
+                }else{
+                    System.out.println("登录失败！");
+                    out.print("<script>alert('登录失败！请确认账号和密码');"
+                            + "window.location.href='index.jsp'</script>");
                 }
 
             }

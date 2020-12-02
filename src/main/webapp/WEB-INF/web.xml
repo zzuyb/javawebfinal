@@ -43,10 +43,20 @@
     <url-pattern>/register.do</url-pattern>
   </servlet-mapping>
 
+<!--学生查询成绩-->
+  <servlet>
+    <servlet-name>StudentshowscoreServlet</servlet-name>
+    <servlet-class>servlets.showscore_admin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentshowscoreServlet</servlet-name>
+    <url-pattern>/stu_showscore.do</url-pattern>
+  </servlet-mapping>
+
 <!--查询成绩-->
   <servlet>
     <servlet-name>AdminshowscoreServlet</servlet-name>
-    <servlet-class>servlets.showscore</servlet-class>
+    <servlet-class>servlets.showscore_admin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminshowscoreServlet</servlet-name>

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import DAO.ScoreDAO;
+import DAO.ScoreDAO_admin;
 import beans.Score;
 
 public class deletescore extends HttpServlet {
@@ -24,7 +24,7 @@ public class deletescore extends HttpServlet {
         HttpSession session = request.getSession();
         ArrayList<Score> list = (ArrayList<Score>) session.getAttribute("score");
         try {
-            i=ScoreDAO.deletescore(studentid,courseid);//进行删除操作
+            i= ScoreDAO_admin.deletescore(studentid,courseid);//进行删除操作
         } catch (Exception e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

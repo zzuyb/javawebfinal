@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import DAO.ScoreDAO;
+import DAO.ScoreDAO_admin;
 import beans.Score;
 
 public class updatescore extends HttpServlet {
@@ -26,7 +26,7 @@ public class updatescore extends HttpServlet {
         HttpSession session = request.getSession();
         ArrayList<Score> list = (ArrayList<Score>) session.getAttribute("score");
         try {
-            i=ScoreDAO.updatescore(studentid,courseid,score);
+            i= ScoreDAO_admin.updatescore(studentid,courseid,score);
         } catch (Exception e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
